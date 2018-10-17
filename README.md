@@ -1,7 +1,9 @@
-Install mod_geoip2 module
+1.Install mod_geoip2 module
 sudo apt-get install libapache2-mod-geoip
-enable headers module in apache
+
+2.enable headers module in apache
 Add the following lines in apache conf file
+ --------------------------------------------
 <IfModule mod_geoip.c>
 GeoIPEnable On
 GeoIPEnableUTF8 On
@@ -25,24 +27,26 @@ SetEnvIfExpr "req_novary('X-Forwarded-For') =~ /(.*)/" XFF-HideIP=$1
 </Else>
 </IfModule>
 </IfModule>
+ ------------------------------------------------------
 
-Now u can either use maxmind database
+3.Now u can either use maxmind database
 http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
 In this case u have to replace mmcountry.dat to GeoIP.dat
 
-Now in case we wish to use netacuity ip2country,some amount of processing needs to be done there
+4.Now in case we wish to use netacuity ip2country,some amount of processing needs to be done there
 
-Download netacuity database:
+5.Download netacuity database:
 ex- ip2co-data-06-2018.csv
 
-
-run the following python ip2co_convert.py
-
+6.run the following python ip2co_convert.py
 python convert.py ip2co-data-06-2018.csv maxmind.csv
-ip2co_convert.py u can remove the if statement as it takes more time and run
+
+7.ip2co_convert.py u can remove the if statement as it takes more time and run
 sed -i '/\*\*/d' maxmind.csv
 This has to be done
-sed -i 's/UK/GB/g' maxmind.csv
-after that u need to convert the generated csv to .dat file
+
+8.sed -i 's/UK/GB/g' maxmind.csv
+
+9.after that u need to convert the generated csv to .dat file
 https://github.com/mteodoro/mmutils/blob/master/csv2dat.py
 python csv2dat.py -w mmcountry.dat mmcountry maxmind.csv
