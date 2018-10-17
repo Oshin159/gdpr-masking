@@ -3,7 +3,8 @@ sudo apt-get install libapache2-mod-geoip
 
 2.enable headers module in apache
 Add the following lines in apache conf file
- --------------------------------------------
+
+---------------------------------------
 <IfModule mod_geoip.c>
 GeoIPEnable On
 GeoIPEnableUTF8 On
