@@ -5,6 +5,7 @@ sudo apt-get install libapache2-mod-geoip
 Add the following lines in apache conf file
 
 ---------------------------------------
+```
 <IfModule mod_geoip.c>
 GeoIPEnable On
 GeoIPEnableUTF8 On
@@ -28,6 +29,8 @@ SetEnvIfExpr "req_novary('X-Forwarded-For') =~ /(.*)/" XFF-HideIP=$1
 </Else>
 </IfModule>
 </IfModule>
+
+```
  ------------------------------------------------------
 
 3.Now u can either use maxmind database
